@@ -21,9 +21,13 @@ public class ProductMapperTest {
 
     @Test
     public void findByPid() {
+        ProductMapper mapper = sqlSessionFactory.openSession().getMapper(ProductMapper.class);
+        System.out.println(mapper.findByPid(7));
     }
 
     @Test
     public void findByCategory() {
+        ProductMapper mapper = sqlSessionFactory.openSession().getMapper(ProductMapper.class);
+        mapper.findByCategory("%女士%").forEach(System.out::println);
     }
 }

@@ -7,6 +7,6 @@
         select * from Mybatis.product where pid=#{pid}
     </select>
     <select id="findByCategory" parameterType="java.lang.String" resultType="com.mybatis.po.Product">
-        SELECT * FROM mybatis.product WHERE category=#{category}
+        SELECT * FROM mybatis.product WHERE category LIKE #{category}
     </select>
 </mapper>
