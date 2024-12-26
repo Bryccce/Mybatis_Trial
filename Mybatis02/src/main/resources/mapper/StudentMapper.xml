@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <select id="findBySno" parameterType="int" resultType="com.mybatis.po.Student">
+        SELECT * FROM Mybatis.student WHERE sno = #{sno}
+    </select>
+    <select id="findBySname" parameterType="java.lang.String" resultType="com.mybatis.po.Student">
+        select * from Mybatis.student where sname like #{sname}
+    </select>
+    <insert id="insertStudent" parameterType="com.mybatis.po.Student">
+        <selectKey keyProperty="sno" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        insert into Mybatis.student(sname, sgender, sbirthday) values (#{sname}, #{sgender}, #{sbirthday})
+    </insert>
+    <update id="updateStudent" parameterType="com.mybatis.po.Student">
+        UPDATE Mybatis.student
+        SET sname=#{sname},
+            sgender=#{sgender},
+            sbirthday=#{sbirthday}
+        WHERE sno = #{sno}
+    </update>
+    <delete id="deleteStudent" parameterType="int">
+        DELETE
+        FROM Mybatis.student
+        WHERE sno = #{sno}
+    </delete>
+</mapper>
