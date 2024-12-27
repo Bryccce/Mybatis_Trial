@@ -1,4 +1,4 @@
-package com.mybatis.po;
+package com.mybatis;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

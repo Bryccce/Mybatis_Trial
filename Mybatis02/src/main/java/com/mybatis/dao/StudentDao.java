@@ -1,6 +1,6 @@
 package com.mybatis.dao;
 
-import com.mybatis.po.Student;
+import com.mybatis.Student;
 
 import java.util.List;
 

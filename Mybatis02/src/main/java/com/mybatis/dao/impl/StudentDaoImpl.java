@@ -1,7 +1,7 @@
 package com.mybatis.dao.impl;
 
 import com.mybatis.dao.StudentDao;
-import com.mybatis.po.Student;
+import com.mybatis.Student;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;

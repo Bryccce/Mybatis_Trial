@@ -2,5 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/../Java_Full_Stack/Mybatis原理与实战/day21_Mybatis_02/resources/product.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../Java_Full_Stack/Mybatis原理与实战/day22_Mybatis_03/resources/mybatis03.sql" dialect="MySQL" />
   </component>
 </project>

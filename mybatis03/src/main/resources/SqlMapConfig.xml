@@ -7,7 +7,6 @@
     <properties resource="db.properties"/>
     <typeAliases>
         <package name="com.mybatis.po"/>
-        <package name="com.mybatis.vo"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -22,8 +21,6 @@
     </environments>
 
   <mappers>
-<!--      <mapper resource="com/mybatis/mapper/ProductMapper.xml"/>-->
-<!--      <mapper resource="com/mybatis/mapper/StudentMapper.xml"/>-->
       <package name="com.mybatis.mapper"/>
   </mappers>
 
