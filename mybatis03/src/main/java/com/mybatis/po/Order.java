@@ -1,8 +1,10 @@
 package com.mybatis.po;
 
+import lombok.Data;
+
 import java.sql.Date;
 import java.util.List;
-
+@Data
 public class Order {
 
     private Integer id;
@@ -24,6 +26,8 @@ public class Order {
     private String note;
 
     private User user;
+
+    private List<OrderDetail> orderDetails;
 
     public Integer getId() {
         return id;
