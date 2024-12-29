@@ -25,6 +25,7 @@ public class User {
     */
     private String address;
 
+    private List<Order> orders;
 
     public Integer getId() {
         return id;

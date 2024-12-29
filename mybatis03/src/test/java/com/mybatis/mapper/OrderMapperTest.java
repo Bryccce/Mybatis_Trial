@@ -12,4 +12,11 @@ public class OrderMapperTest {
                 .findOrderAndUser()
                 .forEach(System.out::println);
     }
+
+    @Test
+    public void findOrdersAndOrderdetail() {
+        sqlSessionFactory.openSession().getMapper(OrderMapper.class)
+                .findOrdersAndOrderdetail()
+                .forEach(System.out::println);
+    }
 }

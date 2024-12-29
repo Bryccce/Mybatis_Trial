@@ -1,6 +1,8 @@
 package com.mybatis.po;
 
+import lombok.Data;
 
+@Data
 public class OrderDetail {
     /**
     * 订单id
@@ -14,7 +16,8 @@ public class OrderDetail {
     * 商品购买数量
     */
     private Integer productNum;
- 
+
+    private Product product;
 
     public Integer getOrderId() {
         return orderId;

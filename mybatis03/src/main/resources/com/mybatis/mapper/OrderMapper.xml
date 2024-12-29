@@ -23,14 +23,15 @@
         FROM mybatis03.user INNER JOIN mybatis03.`order`
                              ON mybatis03.user.id=mybatis03.`order`.user_id
     </select>
-    <resultMap id="findOrderAndOrderdetailResultMap" type="Order" extends="findOrderAndUserResultMap">
-        <collection property="order_detail" ofType="OrderDetail">
+
+    <resultMap id="findOrdersAndOrderDetailResultMap" type="Order" extends="findOrderAndUserResultMap">
+        <collection property="orderDetails" ofType="OrderDetail">
             <id column="order_id" property="orderId"/>
             <id column="product_id" property="productId"/>
             <result column="product_num" property="productNum"/>
         </collection>
     </resultMap>
-    <select id="findOrdersAndOrderdetail" resultMap="findOrderAndOrderdetailResultMap">
+    <select id="findOrdersAndOrderdetail" resultMap="findOrdersAndOrderDetailResultMap">
         SELECT u.id uid, username, birthday, gender, address,
                o.id oid, user_id, number, createtime, note,
                order_id,product_id,product_num
