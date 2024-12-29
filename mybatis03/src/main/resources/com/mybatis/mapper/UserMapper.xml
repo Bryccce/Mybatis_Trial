@@ -3,47 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.UserMapper">
-    <resultMap id="findAllResultMap" type="User">
-        <!--查询结果列和User类映射关系-->
-        <id column="uid" property="id"/>
+    <cache/>
+    <resultMap id="findAllLazyResultMap" type="User">
+        <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="birthday" property="birthday"/>
         <result column="gender" property="gender"/>
         <result column="address" property="address"/>
-        <!--查询结果列和orders集合映射-->
-        <collection property="orders" ofType="Order">
-            <!--查询结果列和Order类的映射-->
-            <id column="oid" property="id"/>
-            <result column="user_id" property="userId"/>
-            <result column="number" property="number"/>
-            <result column="oc" property="createtime"/>
-            <result column="note" property="note"/>
-            <!--查询结果列和orderDetails集合映射-->
-            <collection property="orderDetails" ofType="OrderDetail">
-                <!--查询结果列和OrderDetail类的映射-->
-                <id column="order_id" property="orderId"/>
-                <id column="product_id" property="productId"/>
-                <result column="product_num" property="productNum"/>
-                <!--查询结果列和Product类的映射信息-->
-                <association property="product" javaType="Product">
-                    <id column="pid" property="id"/>
-                    <id column="name" property="name"/>
-                    <id column="price" property="price"/>
-                    <id column="detail" property="detail"/>
-                    <id column="pic" property="pic"/>
-                    <id column="pc" property="createtime"/>
-                </association>
-            </collection>
-        </collection>
+        <collection property="orders" ofType="Order" column="id"
+                    select="com.mybatis.mapper.OrderMapper.findByUserId"/>
     </resultMap>
-    <select id="findAll" resultMap="findAllResultMap">
-        SELECT u.id uid, username, birthday, gender, address,
-               o.id oid, user_id, number, o.createtime oc, note,
-               od.order_id, product_id, product_num,
-               p.id pid, name, price, detail, pic, p.createtime pc
-        FROM mybatis03.user u
-                 LEFT OUTER JOIN mybatis03.`order` o on u.id = o.user_id
-                 LEFT OUTER JOIN mybatis03.order_detail od on o.id = od.order_id
-                 LEFT OUTER JOIN mybatis03.product p on od.product_id = p.id
+    <select id="findAllLazy" resultMap="findAllLazyResultMap">
+        select * from mybatis03.user
     </select>
 </mapper>

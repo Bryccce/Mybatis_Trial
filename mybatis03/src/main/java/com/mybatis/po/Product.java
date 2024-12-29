@@ -1,7 +1,9 @@
 package com.mybatis.po;
 
-import java.sql.Date;
+import lombok.Data;
 
+import java.sql.Date;
+@Data
 public class Product {
 
     private Integer id;
