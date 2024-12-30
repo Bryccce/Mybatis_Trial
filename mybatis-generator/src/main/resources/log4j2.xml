@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--   Configuration：为根节点
+        status属性的值有 “trace”, “debug”, “info”, “warn”, “error” , “fatal”，用于控制log4j2日志框架本身的日志级别-->
+<Configuration status="WARN">
+
+    <!--Appenders:定义输出内容,输出格式,输出方式,日志保存策略等,常用其下三种标签[console,File,RollingFile]-->
+    <Appenders>
+        <!--console :控制台输出的配置-->
+        <Console name="Console" target="SYSTEM_OUT">
+       <!-- PatternLayout：控制台或文件输出源（Console、File、RollingRandomAccessFile）都必须包含一个PatternLayout节点，用于指定输出文件的格式-->
+        <!-- %d{HH:mm:ss.SSS} 表示输出到毫秒的时间
+            %t 输出当前线程名称
+            %-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+            %logger 输出logger名称
+            %msg 日志文本
+            %n 换行
+
+            其他常用的占位符有：
+            %F 输出所在的类文件名，如Log4j2Test.java
+            %L 输出行号
+            %M 输出所在方法名
+            %l 输出语句所在的行数, 包括类名、方法名、文件名、行数-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+    </Appenders>
+
+  <!--  日志器分根日志器Root和自定义日志器，当根据日志名字获取不到指定的日志器时就使用Root作为默认的日志器，
+     自定义时需要指定每个Logger的名称name（对于命名可以以包名作为日志的名字，不同的包配置不同的级别等），日志级别
+
+     对于一般的日志器（如Console、File、RollingRandomAccessFile）一般需要配置一个或多个输出源AppenderRef；
+
+     每个logger可以指定一个level（TRACE, DEBUG, INFO, WARN, ERROR,FATAL, ALL or OFF），不指定时level默认为ERROR-->
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
